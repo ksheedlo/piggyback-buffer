@@ -2,15 +2,16 @@
   "name": "piggyback-buffer",
   "version": "1.0.0",
   "description": "Piggybacks and multiplexes expensive operations",
-  "main": "lib/index.js",
+  "main": "dist/node/index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "prelint": "jscs lib test",
-    "lint": "jshint lib test",
+    "prelint": "jscs Gruntfile.js lib/index.js test",
+    "lint": "jshint Gruntfile.js lib/index.js test",
     "pretest": "npm run lint",
-    "test": "mocha"
+    "test": "mocha",
+    "minify": "uglifyjs --comments -b beautify=false,max-line-len=500 -m --source-map dist/piggyback-buffer.min.js.map -o dist/piggyback-buffer.min.js dist/piggyback-buffer.js"
   },
   "repository": {
     "type": "git",
@@ -32,8 +33,12 @@
   "devDependencies": {
     "async": "^0.9.0",
     "chai": "^1.10.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.0",
     "jscs": "^1.10.0",
     "jshint": "^2.5.11",
-    "mocha": "^2.1.0"
+    "mocha": "^2.1.0",
+    "q": "^1.1.2",
+    "uglify-js": "^2.4.16"
   }
 }

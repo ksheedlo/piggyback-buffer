@@ -2,7 +2,8 @@
 
 var async = require('async'),
   expect = require('chai').expect,
-  PiggybackBuffer = require('../lib');
+  PiggybackBuffer = require('../lib'),
+  Q = require('q');
 
 describe('PiggybackBuffer', function () {
   var buffer;
@@ -91,5 +92,31 @@ describe('PiggybackBuffer', function () {
     expect(function () {
       buffer.reject('foo', 'nonexistent key');
     }).to.throw(/^\[PiggybackBuffer:notpending\]/);
+  });
+
+  it('resolves a promise', function (done) {
+    var deferred = Q.defer();
+
+    buffer.queue('foo', deferred);
+
+    deferred.promise.then(function (msg) {
+      expect(msg).to.equal('testing promises');
+      done();
+    });
+
+    buffer.resolve('foo', 'testing promises');
+  });
+
+  it('rejects a promise', function (done) {
+    var deferred = Q.defer();
+
+    buffer.queue('foo', deferred);
+
+    deferred.promise.catch(function (msg) {
+      expect(msg).to.equal('Oops!');
+      done();
+    });
+
+    buffer.reject('foo', 'Oops!');
   });
 });

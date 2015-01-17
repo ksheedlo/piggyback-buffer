@@ -1,0 +1,25 @@
+{
+  "name": "piggyback-buffer",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ksheedlo/piggyback-buffer",
+  "authors": [
+    "Ken Sheedlo <ken.sheedlo@rackspace.com>"
+  ],
+  "description": "Piggybacks and multiplexes expensive operations",
+  "main": "dist/piggyback-buffer.js",
+  "keywords": [
+    "buffer",
+    "request",
+    "piggyback",
+    "caching",
+    "cache"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

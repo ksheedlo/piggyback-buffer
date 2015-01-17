@@ -2,7 +2,7 @@
   "name": "piggyback-buffer",
   "version": "1.0.0",
   "description": "Piggybacks and multiplexes expensive operations",
-  "main": "dist/node/index.js",
+  "main": "lib/index.js",
   "directories": {
     "test": "test"
   },
